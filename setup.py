@@ -2,11 +2,12 @@
 
 
 from setuptools import setup
+import mdx_semanticwikilinks
 
 
 setup(
     name='mdx_semanticwikilinks',
-    version='1.0',
+    version=mdx_semanticwikilinks.__version__,
     author='Alexandre Leray',
     author_email='alexandre@stdin.fr',
     description='Python-Markdown extension to add support for semantic (wiki)links (RDFa)..',

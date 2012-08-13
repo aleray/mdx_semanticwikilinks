@@ -28,7 +28,8 @@ Usage
 
 Define a custom URL builder:
 
-    >>> def make_rdfa(rel, target, label):
+    >>> def make_rdfa(md, rel, target, label):
+    ...     # `md` is the Markdown instance
     ...     elt = etree.Element("span")
     ...     elt.set("property", rel)
     ...     elt.set("value", target)
@@ -82,6 +83,9 @@ except ImportError: from markdown.util import etree
 import re
 
 
+__version__ = "1.1"
+
+
 WIKILINK_RE = r"""
 \[\[\s*
     (?:((?P<namespace>\w+):)?(?P<rel>[^\]#]+?) \s* ::)? \s*
@@ -91,7 +95,7 @@ WIKILINK_RE = r"""
 """.strip()
 
 
-def make_link(rel, target, label):
+def make_link(md, rel, target, label):
     a = etree.Element('a')
     a.set('href', target)
     if rel:
@@ -138,7 +142,7 @@ class SemanticWikiLinkPattern(markdown.inlinepatterns.Pattern):
         if rel:
             rel = "%s:%s" % (namespace, d.get("rel"))
 
-        return fn(rel, d.get("target"), d.get("label"))
+        return fn(self.markdown, rel, d.get("target"), d.get("label"))
 
 
 def makeExtension(configs={}):

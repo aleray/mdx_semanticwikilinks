@@ -30,7 +30,8 @@ Usage
 
 Define a custom URL builder:
 
-    >>> def make_rdfa(rel, target, label):
+    >>> def make_rdfa(md, rel, target, label):
+    ...     # `md` is the Markdown instance
     ...     elt = etree.Element("span")
     ...     elt.set("property", rel)
     ...     elt.set("value", target)
