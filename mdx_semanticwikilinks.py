@@ -83,7 +83,7 @@ except ImportError: from markdown.util import etree
 import re
 
 
-__version__ = "1.1"
+__version__ = "1.1.1"
 
 
 WIKILINK_RE = r"""
